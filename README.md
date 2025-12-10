@@ -41,6 +41,6 @@ The pipeline is modular, allowing:
 ### Clone the repository
 
 ```bash
-git clone <repo_url>
-cd project
+git clone gh repo clone davidcode2021/accident_project
+
 ```
