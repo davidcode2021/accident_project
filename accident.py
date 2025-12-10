@@ -5,6 +5,7 @@ import pandas as pd
 import scipy
 import joblib
 import sys
+import os
 import requests
 
 MODEL_URL = "https://drive.google.com/uc?id=1HUpw8rhbi4BAiCWTzsVHq-oyBcOy6hDh&export=download"  # replace with your file ID
