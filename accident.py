@@ -7,7 +7,7 @@ import joblib
 import sys
 import requests
 
-MODEL_URL = "https://drive.google.com/file/d/1HUpw8rhbi4BAiCWTzsVHq-oyBcOy6hDh/view?usp=drive_link"  # replace with your file ID
+MODEL_URL = "https://drive.google.com/uc?id=1HUpw8rhbi4BAiCWTzsVHq-oyBcOy6hDh&export=download"  # replace with your file ID
 
 if not os.path.exists("model_pipeline.pkl"):
     print("Downloading model from Google Drive...")
