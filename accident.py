@@ -5,6 +5,16 @@ import pandas as pd
 import scipy
 import joblib
 import sys
+import requests
+
+MODEL_URL = "https://drive.google.com/file/d/1HUpw8rhbi4BAiCWTzsVHq-oyBcOy6hDh/view?usp=drive_link"  # replace with your file ID
+
+if not os.path.exists("model_pipeline.pkl"):
+    print("Downloading model from Google Drive...")
+    r = requests.get(MODEL_URL)
+    with open("model_pipeline.pkl", "wb") as f:
+        f.write(r.content)
+    
 
 sys.modules['__main__'].FeatureEngineer = FeatureEngineering
 sys.modules['__main__'].TargetEncoder = TargetEncoder
