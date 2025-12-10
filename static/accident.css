@@ -1,0 +1,84 @@
+/* styles.css */
+/* Paste this into styles.css if you want the CSS as a separate file */
+:root{
+--bg1: #0f172a;
+--bg2: #0b3a52;
+--card: rgba(255,255,255,0.06);
+--glass: rgba(255,255,255,0.04);
+--accent: #70e1f5;
+}
+*{box-sizing:border-box;font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial}
+body{
+margin:0;
+min-height:100vh;
+background: radial-gradient(1000px 600px at 10% 10%, rgba(112,225,245,0.06), transparent), linear-gradient(135deg,var(--bg1), var(--bg2));
+color:#e6eef6;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:32px;
+}
+.container{width:100%;max-width:980px;padding:20px}
+.card{
+background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+border: 1px solid rgba(255,255,255,0.06);
+border-radius:16px;
+padding:28px;
+box-shadow:0 10px 30px rgba(2,6,23,0.6);
+backdrop-filter: blur(6px) saturate(120%);
+}
+.card h1{margin:0 0 6px;font-size:1.6rem}
+.subtitle{color:rgba(230,238,246,0.75);margin:0 0 18px}
+form{display:block}
+.row{display:flex;gap:18px;margin-bottom:14px}
+label{display:flex;flex-direction:column;flex:1;font-size:0.95rem}
+input[type=number], select{padding:8px 10px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:var(--glass);color:inherit}
+.checkbox{flex-direction:row;align-items:center;gap:8px}
+.actions{display:flex;gap:10px;margin-top:8px}
+button{padding:10px 14px;border-radius:10px;border:0;cursor:pointer;font-weight:600}
+#predictBtn{background:linear-gradient(90deg,var(--accent), #5ee3c7);color:#012;box-shadow:0 6px 18px rgba(112,225,245,0.12)}
+button.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:inherit}
+.result{margin-top:18px;background:rgba(255,255,255,0.02);padding:12px;border-radius:10px}
+.payload{white-space:pre-wrap;margin:0;padding:8px;background:rgba(0,0,0,0.15);border-radius:8px;color:#dff6ff}
+.response{margin-top:8px;padding:10px;border-radius:8px;background:rgba(0,0,0,0.12);min-height:40px}
+.note{margin-top:12px;color:rgba(230,238,246,0.6)}
+
+/* Align checkboxes horizontally with label text */
+.checkbox {
+    display: flex;         /* make the label a flex container */
+    align-items: center;   /* vertically center the checkbox and text */
+    gap: 8px;              /* space between checkbox and label text */
+    margin-bottom: 10px;   /* optional spacing */
+}
+.form-footer {
+    margin-top: 20px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    font-size: 0.85rem;
+    color: rgba(230, 238, 246, 0.6);
+}
+.logo-floating {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 80px;
+    height: auto;
+    z-index: 10;
+    opacity: 0.95;
+}
+ .risk-box {
+            padding: 20px;
+            border-radius: 8px;
+            width: 300px;
+            margin: 20px auto;
+            text-align: center;
+            font-size: 18px;
+            color: white;
+}
+.high-risk { background: #d9534f; }
+.low-risk { background: #5cb85c; }
+
+@media (max-width:720px){
+.row{flex-direction:column}
+}

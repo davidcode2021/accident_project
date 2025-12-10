@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Accident Risk Form</title>
+    <link rel="stylesheet" href="static/accident.css">
+</head>
+<body>
+     <img src="static/bluehouse.jpg" alt="bluehouse logo" class="logo-floating">
+
+<div class="form-card">
+    <h2>Accident Risk Prediction</h2>
+
+    <form action="/predict" method="POST">
+
+        <!-- road_type -->
+        <label>Road Type</label>
+        <select name="road_type">
+            <option value="urban">urban</option>
+            <option value="rural">rural</option>
+            <option value="highway">highway</option>
+        </select>
+
+        <!-- num_lanes -->
+        <label>Number of Lanes</label>
+        <input type="number" name="num_lanes" required>
+
+        <!-- curvature -->
+        <label>Curvature</label>
+        <input type="number" name="curvature" step="0.01" required>
+
+        <!-- speed_limit -->
+        <label>Speed Limit</label>
+        <input type="number" name="speed_limit" required>
+
+        <!-- lighting -->
+        <label>Lighting</label>
+        <select name="lighting">
+            <option value="daylight">daylight</option>
+            <option value="night">night</option>
+            <option value="dim">dim</option>
+        </select>
+
+        <!-- weather -->
+        <label>Weather</label>
+        <select name="weather">
+            <option value="clear">clear</option>
+            <option value="rainy">rainy</option>
+            <option value="foggy">foggy</option>
+        </select>
+
+        <!-- weather -->
+        <label>Time_of_day</label>
+        <select name="time_of_day">
+            <option value="afternoon">afternoon</option>
+            <option value="evening">evening</option>
+            <option value="morning">morning</option>
+        </select>
+        
+        <!-- checkboxes -->
+        <label class="checkbox"><input type="checkbox" name="road_signs_present"> Road Signs Present</label>
+        <label class="checkbox"><input type="checkbox" name="public_road"> Public Road</label>
+        <label class="checkbox"><input type="checkbox" name="holiday"> Holiday</label>
+        <label class="checkbox"><input type="checkbox" name="school_season"> School Season</label>
+
+
+        <label>Reported Accidents</label>
+        <input type="number" name="num_reported_accidents" required>
+
+        <button type="submit">Predict</button>
+    </form>
+    {% if risk is defined %}
+        {% if risk > 0.5 %}
+            <div class="risk-box high-risk">
+                <strong>High Risk!</strong><br>
+                Probability: {{ "%.2f"|format(risk) }}
+                <script>alert("High accident risk detected!");</script>
+            </div>
+        {% else %}
+            <div class="risk-box low-risk">
+                <strong>Low Risk</strong><br>
+                Probability: {{ "%.2f"|format(risk) }}
+
+            </div>
+        {% endif %}
+    {% endif %}
+
+    <footer class="form-footer">
+    <p>project by david pam. From bluehouse technology.2025</p>
+</footer>
+
+</div>
+
+</body>
+</html>
