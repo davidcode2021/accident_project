@@ -8,6 +8,18 @@ import sys
 import os
 import requests
 
+
+print("=== DIAGNOSTIC: INSTALLED VERSIONS ===", file=sys.stderr)
+print(f"Python: {sys.version}", file=sys.stderr)
+print(f"NumPy: {numpy.__version__}", file=sys.stderr)
+print(f"pandas: {pandas.__version__}", file=sys.stderr)
+print(f"xgboost: {xgboost.__version__}", file=sys.stderr)
+print(f"scikit-learn: {sklearn.__version__}", file=sys.stderr)
+print(f"joblib: {joblib.__version__}", file=sys.stderr)
+print(f"scipy: {scipy.__version__}", file=sys.stderr)
+print("======================================", file=sys.stderr)
+
+
 MODEL_URL = "https://drive.google.com/uc?id=1HUpw8rhbi4BAiCWTzsVHq-oyBcOy6hDh&export=download"  # replace with your file ID
 
 if not os.path.exists("model_pipeline.pkl"):
