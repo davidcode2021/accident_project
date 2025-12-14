@@ -33,10 +33,10 @@ if not os.path.exists(MODEL_PATH):
 
 print("Model size:", os.path.getsize(MODEL_PATH))
   
-sys.modules['__main__'].FeatureEngineer = FeatureEngineering
+sys.modules['__main__'].FeatureEngineering = FeatureEngineering
 sys.modules['__main__'].TargetEncoder = TargetEncoder
 
-model=joblib.load("MODEL_PATH")
+model=joblib.load(MODEL_PATH)
 app = Flask(__name__)
 
 # home page
