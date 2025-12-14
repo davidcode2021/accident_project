@@ -16,24 +16,6 @@ The pipeline is modular, allowing:
 - Target encoding for categorical and combined features
 - Residual prediction using XGBoost
 - 
-## Model Storage (Google Drive)
-
-### Why the model is not in the repository
-The trained model file (`model_pipeline.pkl`) is relatively large and exceeds GitHub’s recommended file size limits.  
-To keep the repository lightweight and avoid Git LFS complexity, the model is stored externally on **Google Drive**.
-
----
-
-### Model Location
-The model is hosted on Google Drive and made publicly accessible (read-only).
-
-**Google Drive file link:**  
-https://drive.google.com/file/d/1HUpw8rhbi4BAiCWTzsVHq-oyBcOy6hDh/view
-
-**Google Drive File ID:**  
-1HUpw8rhbi4BAiCWTzsVHq-oyBcOy6hDh
-
-
 ---
 
 ## Features
@@ -55,6 +37,23 @@ https://drive.google.com/file/d/1HUpw8rhbi4BAiCWTzsVHq-oyBcOy6hDh/view
    - XGBoost regressor
    - Configured with tuned hyperparameters and trained on engineered features + TE
 ---
+
+## Model Storage (Google Drive)
+
+### Why the model is not in the repository
+The trained model file (`model_pipeline.pkl`) is relatively large and exceeds GitHub’s recommended file size limits.  
+To keep the repository lightweight and avoid Git LFS complexity, the model is stored externally on **Google Drive**.
+
+---
+
+### Model Location
+The model is hosted on Google Drive and made publicly accessible (read-only).
+
+**Google Drive file link:**  
+https://drive.google.com/file/d/1HUpw8rhbi4BAiCWTzsVHq-oyBcOy6hDh/view
+
+**Google Drive File ID:**  
+1HUpw8rhbi4BAiCWTzsVHq-oyBcOy6hDh
 
 ### Clone the repository
 
