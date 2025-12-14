@@ -9,29 +9,34 @@ import sys
 import os
 import requests
 
-
-# print("=== DIAGNOSTIC: INSTALLED VERSIONS ===", file=sys.stderr)
-# print(f"Python: {sys.version}", file=sys.stderr)
-# print(f"NumPy: {numpy.__version__}", file=sys.stderr)
-# print(f"pandas: {pandas.__version__}", file=sys.stderr)
-# print(f"xgboost: {xgboost.__version__}", file=sys.stderr)
-# print(f"scikit-learn: {sklearn.__version__}", file=sys.stderr)
-# print(f"joblib: {joblib.__version__}", file=sys.stderr)
-# print(f"scipy: {scipy.__version__}", file=sys.stderr)
-# print("======================================", file=sys.stderr)
-
 MODEL_PATH = "model_pipeline.pkl"
 GDRIVE_ID = "1HUpw8rhbi4BAiCWTzsVHq-oyBcOy6hDh"
 
+def download_from_gdrive(file_id, destination):
+    url = "https://drive.google.com/uc?export=download"
+    session = requests.Session()
+
+    response = session.get(url, params={"id": file_id}, stream=True)
+    token = None
+    for key, value in response.cookies.items():
+        if key.startswith("download_warning"):
+            token = value
+
+    if token:
+        params = {"id": file_id, "confirm": token}
+        response = session.get(url, params=params, stream=True)
+
+    with open(destination, "wb") as f:
+        for chunk in response.iter_content(32768):
+            if chunk:
+                f.write(chunk)
+
 if not os.path.exists(MODEL_PATH):
     print("Downloading model from Google Drive...")
-    gdown.download(
-        id=GDRIVE_ID,
-        output=MODEL_PATH,
-        quiet=False
-    )
+    download_from_gdrive(GDRIVE_ID, MODEL_PATH)
 
 print("Model size:", os.path.getsize(MODEL_PATH))
+
   
 sys.modules['__main__'].FeatureEngineering = FeatureEngineering
 sys.modules['__main__'].TargetEncoder = TargetEncoder
