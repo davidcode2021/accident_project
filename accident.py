@@ -26,13 +26,13 @@ GDRIVE_ID = "1HUpw8rhbi4BAiCWTzsVHq-oyBcOy6hDh"
 if not os.path.exists(MODEL_PATH):
     print("Downloading model from Google Drive...")
     gdown.download(
-        f"https://drive.google.com/uc?id={GDRIVE_ID}",
-        MODEL_PATH,
+        id=GDRIVE_ID,
+        output=MODEL_PATH,
         quiet=False
     )
 
 print("Model size:", os.path.getsize(MODEL_PATH))
-
+  
 sys.modules['__main__'].FeatureEngineer = FeatureEngineering
 sys.modules['__main__'].TargetEncoder = TargetEncoder
 
