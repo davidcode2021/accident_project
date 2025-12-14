@@ -4,7 +4,6 @@ import numpy as np
 import pandas as pd 
 import scipy
 import joblib
-import gdown
 import sys
 import os
 import requests
