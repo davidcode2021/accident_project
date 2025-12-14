@@ -4,6 +4,7 @@ import numpy as np
 import pandas as pd 
 import scipy
 import joblib
+import gdown
 import sys
 import os
 import requests
@@ -19,22 +20,23 @@ import requests
 # print(f"scipy: {scipy.__version__}", file=sys.stderr)
 # print("======================================", file=sys.stderr)
 
+MODEL_PATH = "model_pipeline.pkl"
+GDRIVE_ID = "1HUpw8rhbi4BAiCWTzsVHq-oyBcOy6hDh"
 
-MODEL_URL = "https://drive.google.com/uc?id=1HUpw8rhbi4BAiCWTzsVHq-oyBcOy6hDh&export=download"  # replace with your file ID
-
-if not os.path.exists("model_pipeline.pkl"):
+if not os.path.exists(MODEL_PATH):
     print("Downloading model from Google Drive...")
-    r = requests.get(MODEL_URL)
-    with open("model_pipeline.pkl", "wb") as f:
-        f.write(r.content)
-    
+    gdown.download(
+        f"https://drive.google.com/uc?id={GDRIVE_ID}",
+        MODEL_PATH,
+        quiet=False
+    )
+
+print("Model size:", os.path.getsize(MODEL_PATH))
 
 sys.modules['__main__'].FeatureEngineer = FeatureEngineering
 sys.modules['__main__'].TargetEncoder = TargetEncoder
 
-model=joblib.load("model_pipeline.pkl")
-
-
+model=joblib.load("MODEL_PATH")
 app = Flask(__name__)
 
 # home page
